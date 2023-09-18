@@ -1,5 +1,5 @@
 import { getServerSession } from "next-auth"
-import { authOptions } from "../api/auth/[...nextauth]/route"
+import { authOptions  } from "../api/auth/[...nextauth]/nextauth-config"
 import { redirect } from "next/navigation";
 
 
@@ -8,6 +8,7 @@ interface SignInLayoutProps {
 }
 
 export default async function SignInLayout({children}:SignInLayoutProps) {
+
     const session = await getServerSession(authOptions);
     if (session) {
         return redirect("/")
