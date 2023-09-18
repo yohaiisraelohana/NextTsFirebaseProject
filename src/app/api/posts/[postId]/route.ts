@@ -19,7 +19,7 @@ export async function PUT(request : NextRequest , context : { params : { postId 
             title:post.title,
             body:post.body
         });
-        await revalidate(["/posts" , `/posts/${postId}`]);
+        await revalidate(request,["/posts" , `/posts/${postId}`]);
         return NextResponse.json({message:"Post updated successfully"});
     } catch (error) {
         console.error("error editing post",error);
@@ -33,7 +33,7 @@ export async function DELETE(request : NextRequest , context : { params : { post
         return new NextResponse("Bad request : id is required" , {status : 400});
     try {
         await firestore.collection('posts').doc(postId).delete();
-        await revalidate(["/posts" , `/posts/${postId}`]);
+        await revalidate(request,["/posts" , `/posts/${postId}`]);
         return NextResponse.json({message:"post deleted successfully"});
     } catch (error) {
         return new NextResponse("Internal Server Error" , {status:500});

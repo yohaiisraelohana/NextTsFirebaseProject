@@ -14,7 +14,7 @@ export async function POST(request:NextRequest) {
         await firestore.collection("posts").doc().set({
             ...post
         });
-        await revalidate(["/posts"]);
+        await revalidate(request,["/posts"]);
         return NextResponse.json({message:"post added successfully"});
     } catch (error) {
         console.error( "add post error ", error);

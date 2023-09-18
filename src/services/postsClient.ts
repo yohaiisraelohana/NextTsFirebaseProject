@@ -1,6 +1,6 @@
 export async function addPost(post : PostInt) {
     try {
-        const response = await fetch("http://localhost:3000/api/posts" , {
+        const response = await fetch("/api/posts" , {
             method : "POST",
             headers : {
                 "Context-Type" : "application/json"
@@ -21,7 +21,7 @@ export async function addPost(post : PostInt) {
 
 export async function updatePost(post : PostInt) {
     try {
-        const response = await fetch(`http://localhost:3000/api/posts/${post.id}` , {
+        const response = await fetch(`/api/posts/${post.id}` , {
             method : "PUT",
             headers : {
                 "Context-Type" : "application/json"
@@ -42,7 +42,7 @@ export async function updatePost(post : PostInt) {
 
 export async function deletePost(postId:string) {
     try {
-        const res = await fetch(`http://localhost:3000/api/posts/${postId}`,
+        const res = await fetch(`/api/posts/${postId}`,
         {
             method:"DELETE"
         })

@@ -7,7 +7,8 @@ export default  function revalidate( req : NextRequest , paths:string[]){
         cache:"no-cache",
         method:"POST",
         headers:{
-            "Content-Type" : "application/json"
+            "Content-Type" : "application/json",
+            "Cookie" : req.cookies.toString()
         },
         body : JSON.stringify({
             paths,
